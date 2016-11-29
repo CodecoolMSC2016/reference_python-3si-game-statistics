@@ -25,11 +25,13 @@ def get_line_number_by_title(input_file):
 
 def sort_abc(input_file):
     res = reports.sort_abc(input_file)
-    print('What is the alphabetical ordered list of the titles?', '\n'.join(res), '\n')
+    res = ', '.join(res)
+    print('What is the alphabetical ordered list of the titles?', res, '\n')
 
 def get_genres(input_file):
     res = reports.get_genres(input_file)
-    print('What are the genres?', '\n'.join(res), '\n')
+    res = ', '.join(res)
+    print('What are the genres?', res, '\n')
 
 def when_was_top_sold_fps(input_file):
     res = reports.when_was_top_sold_fps(input_file)
