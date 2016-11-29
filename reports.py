@@ -7,8 +7,21 @@ def get_table(file_name):
     return table
 
 
+def sort_titles(titles):
+    sorted_titles = []
+    while len(titles) > 0:
+        min_i = None
+        for i in range(len(titles)):
+            if min_i is None or titles[i] < titles[min_i]:
+                min_i = i
+        sorted_titles.append(titles[min_i])
+        del titles[min_i]
+    titles.extend(sorted_titles)
+
+
 def count_games(file_name):
     return len(get_table(file_name))
+
 
 def decide(file_name, year):
     table = get_table(file_name)
@@ -53,3 +66,13 @@ def get_line_number_by_title(file_name, title):
     if line_number is None:
         raise ValueError()
     return line_number
+
+
+def sort_abc(file_name):
+    table = get_table(file_name)
+    titles = []
+    for row in table:
+        game_title = row[0]
+        titles.append(game_title)
+    sort_titles(titles)
+    return titles
