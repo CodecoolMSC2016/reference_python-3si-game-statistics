@@ -29,3 +29,12 @@ def get_latest(file_name):
             max_title = game_title
             max_year = game_year
     return max_title
+
+def count_by_genre(file_name, genre):
+    count = 0
+    table = get_table(file_name)
+    for row in table:
+        game_genre = row[3]
+        if genre == game_genre:
+            count += 1
+    return count
