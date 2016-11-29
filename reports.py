@@ -18,6 +18,7 @@ def decide(file_name, year):
             return True
     return False
 
+
 def get_latest(file_name):
     max_title = None
     max_year = None
@@ -30,6 +31,7 @@ def get_latest(file_name):
             max_year = game_year
     return max_title
 
+
 def count_by_genre(file_name, genre):
     count = 0
     table = get_table(file_name)
@@ -38,6 +40,7 @@ def count_by_genre(file_name, genre):
         if genre == game_genre:
             count += 1
     return count
+
 
 def get_line_number_by_title(file_name, title):
     line_number = None
