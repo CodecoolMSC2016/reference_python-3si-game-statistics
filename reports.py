@@ -7,16 +7,18 @@ def get_table(file_name):
     return table
 
 
-def sort_titles(titles):
-    sorted_titles = []
-    while len(titles) > 0:
+def sort_strings(strings):
+    sorted_strings = []
+    while len(strings) > 0:
         min_i = None
-        for i in range(len(titles)):
-            if min_i is None or titles[i] < titles[min_i]:
+        for i in range(len(strings)):
+            # need lower() because uppercase letters are 'less than'
+            # their lowercase counterparts: 'A' < 'a' == True
+            if min_i is None or strings[i].lower() < strings[min_i].lower():
                 min_i = i
-        sorted_titles.append(titles[min_i])
-        del titles[min_i]
-    titles.extend(sorted_titles)
+        sorted_strings.append(strings[min_i])
+        del strings[min_i]
+    strings.extend(sorted_strings)
 
 
 def count_games(file_name):
@@ -74,5 +76,5 @@ def sort_abc(file_name):
     for row in table:
         game_title = row[0]
         titles.append(game_title)
-    sort_titles(titles)
+    sort_strings(titles)
     return titles
