@@ -8,3 +8,5 @@ __pycache__/
 
 # Vim
 *.swp
+
+game_stat_export.txt
