@@ -89,3 +89,21 @@ def get_genres(file_name):
             genres.append(game_genre)
     sort_strings(genres)
     return genres
+
+
+def when_was_top_sold_fps(file_name):
+    table = get_table(file_name)
+    max_units_sold = None
+    max_year = None
+    for row in table:
+        game_genre = row[3]
+        if game_genre != 'First-person shooter':
+            continue
+        units_sold = float(row[1])
+        game_year = int(row[2])
+        if max_units_sold is None or max_units_sold < units_sold:
+            max_units_sold = units_sold
+            max_year = game_year
+    if max_year is None:
+        raise ValueError()
+    return max_year
