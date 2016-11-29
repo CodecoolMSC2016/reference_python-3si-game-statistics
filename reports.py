@@ -78,3 +78,14 @@ def sort_abc(file_name):
         titles.append(game_title)
     sort_strings(titles)
     return titles
+
+
+def get_genres(file_name):
+    table = get_table(file_name)
+    genres = []
+    for row in table:
+        game_genre = row[3]
+        if game_genre not in genres:
+            genres.append(game_genre)
+    sort_strings(genres)
+    return genres
