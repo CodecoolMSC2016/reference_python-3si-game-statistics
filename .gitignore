@@ -10,3 +10,4 @@ __pycache__/
 *.swp
 
 game_stat_export.txt
+part2/game_stat_export.txt
