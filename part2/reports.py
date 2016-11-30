@@ -7,6 +7,7 @@ def get_table(file_name):
     with open(file_name, 'r') as f:
         lines = f.readlines()
         for line in lines:
+            line = line.strip('\n')
             parts = line.split('\t')
             table.append(parts)
     return table
@@ -63,3 +64,17 @@ def get_date_avg(file_name):
         game_year = int(row[2])
         sum_year += game_year
     return round_up(sum_year / table_length)
+
+
+def get_game(file_name, title):
+    table = get_table(file_name)
+    for row in table:
+        game_title = row[0]
+        if title == game_title:
+            return [
+                row[0],
+                float(row[1]),
+                int(row[2]),
+                row[3],
+                row[4],
+            ]
