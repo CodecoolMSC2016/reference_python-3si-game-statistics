@@ -10,11 +10,11 @@ def get_table(file_name):
 def sort_strings(strings):
     sorted_strings = []
     while len(strings) > 0:
-        min_i = None
-        for i in range(len(strings)):
+        min_i = 0
+        for i in range(1, len(strings)):
             # need lower() because uppercase letters are 'less than'
             # their lowercase counterparts: 'A' < 'a' == True
-            if min_i is None or strings[i].lower() < strings[min_i].lower():
+            if strings[i].lower() < strings[min_i].lower():
                 min_i = i
         sorted_strings.append(strings[min_i])
         del strings[min_i]
