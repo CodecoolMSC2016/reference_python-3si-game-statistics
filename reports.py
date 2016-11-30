@@ -58,16 +58,13 @@ def count_by_genre(file_name, genre):
 
 
 def get_line_number_by_title(file_name, title):
-    line_number = None
     table = get_table(file_name)
     for i in range(len(table)):
         row = table[i]
         game_title = row[0]
         if title == game_title:
-            line_number = i + 1
-    if line_number is None:
-        raise ValueError()
-    return line_number
+            return i + 1
+    raise ValueError()
 
 
 def sort_abc(file_name):
