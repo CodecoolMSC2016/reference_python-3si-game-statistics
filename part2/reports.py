@@ -2,6 +2,32 @@ def round_up(number):
     return int(number + 1)
 
 
+def sort_table_by_year_and_title(table):
+    sorted_table = []
+    while len(table) > 0:
+        min_i = 0
+        min_row = table[min_i]
+        min_game_title = min_row[0]
+        min_game_year = int(min_row[2])
+        for i in range(1, len(table)):
+            row = table[i]
+            game_title = row[0]
+            game_year = int(row[2])
+            newer_game = game_year > min_game_year
+            same_year = game_year == min_game_year
+            # need lower() because uppercase letters are 'less than'
+            # their lowercase counterparts: 'A' < 'a' == True
+            earlier_title = game_title.lower() < min_game_title.lower()
+            if newer_game or (same_year and earlier_title):
+                min_i = i
+                min_row = row
+                min_game_title = game_title
+                min_game_year = game_year
+        sorted_table.append(min_row)
+        del table[min_i]
+    table.extend(sorted_table)
+
+
 def get_table(file_name):
     table = []
     with open(file_name, 'r') as f:
@@ -90,3 +116,13 @@ def count_grouped_by_genre(file_name):
         else:
             genre_count[game_genre] = 1
     return genre_count
+
+
+def get_date_ordered(file_name):
+    table = get_table(file_name)
+    sort_table_by_year_and_title(table)
+    titles = []
+    for row in table:
+        game_title = row[0]
+        titles.append(game_title)
+    return titles
