@@ -78,3 +78,15 @@ def get_game(file_name, title):
                 row[3],
                 row[4],
             ]
+
+
+def count_grouped_by_genre(file_name):
+    genre_count = {}
+    table = get_table(file_name)
+    for row in table:
+        game_genre = row[3]
+        if game_genre in genre_count:
+            genre_count[game_genre] += 1
+        else:
+            genre_count[game_genre] = 1
+    return genre_count
