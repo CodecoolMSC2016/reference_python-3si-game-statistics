@@ -1,3 +1,7 @@
+def round_up(number):
+    return int(number + 1)
+
+
 def get_table(file_name):
     table = []
     with open(file_name, 'r') as f:
@@ -31,7 +35,11 @@ def sum_sold(file_name):
 
 
 def get_selling_avg(file_name):
-    return sum_sold(file_name) / len(get_table(file_name))
+    table = get_table(file_name)
+    table_length = len(table)
+    if table_length == 0:
+        return 0
+    return sum_sold(file_name) / table_length
 
 
 def count_longest_title(file_name):
@@ -43,3 +51,15 @@ def count_longest_title(file_name):
                 or longest_title_length < game_title_length:
             longest_title_length = game_title_length
     return longest_title_length
+
+
+def get_date_avg(file_name):
+    table = get_table(file_name)
+    table_length = len(table)
+    if table_length == 0:
+        return 0
+    sum_year = 0
+    for row in table:
+        game_year = int(row[2])
+        sum_year += game_year
+    return round_up(sum_year / table_length)
