@@ -28,3 +28,7 @@ def sum_sold(file_name):
         units_sold = float(row[1])
         sum_units_sold += units_sold
     return sum_units_sold
+
+
+def get_selling_avg(file_name):
+    return sum_sold(file_name) / len(get_table(file_name))
