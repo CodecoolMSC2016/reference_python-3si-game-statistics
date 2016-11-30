@@ -22,8 +22,8 @@ def get_most_played(file_name):
 
 
 def sum_sold(file_name):
-    table = get_table(file_name)
     sum_units_sold = 0
+    table = get_table(file_name)
     for row in table:
         units_sold = float(row[1])
         sum_units_sold += units_sold
@@ -32,3 +32,14 @@ def sum_sold(file_name):
 
 def get_selling_avg(file_name):
     return sum_sold(file_name) / len(get_table(file_name))
+
+
+def count_longest_title(file_name):
+    longest_title_length = None
+    table = get_table(file_name)
+    for row in table:
+        game_title_length = len(row[0])
+        if longest_title_length is None \
+                or longest_title_length < game_title_length:
+            longest_title_length = game_title_length
+    return longest_title_length
